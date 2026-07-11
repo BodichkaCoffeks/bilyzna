@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dress Together | Якісна жіноча та чоловіча білизна від виробника</title>
+    <meta name="description" content="Інтернет-магазин Dress Together: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери від виробника за найкращими цінами в Україні.">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg: #faf9f6;
+            --color-alt: #f3efe9;
+            --color-text-main: #252422;
+            --color-text-muted: #5c5a54;
+            --color-accent: #4a3b32;
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            
+            --color-tg-main: #0088cc;
+            --color-tg-hover: #0077b3;
+            --color-viber-main: #7360f2;
+            --color-viber-hover: #5f4edb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .top-section {
+            padding: 60px 0 40px 0;
+        }
+
+        h1 {
+            font-size: clamp(28px, 4.5vw, 46px);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 40px;
+            color: var(--color-text-main);
+        }
+
+        .top-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .logo-placeholder {
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(74, 59, 50, 0.03);
+        }
+
+        .logo-title {
+            font-size: 24px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--color-accent);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .logo-subtitle {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
+        .welcome-text {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            text-align: justify;
+        }
+
+        .category-block {
+            padding: 100px 0;
+        }
+
+        .category-block.bg-alt {
+            background-color: var(--color-alt);
+        }
+
+        .chess-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .category-content h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--color-accent);
+            border-radius: 2px;
+        }
+
+        .category-content p {
+            color: var(--color-text-muted);
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        .category-scroll-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 24px;
+            color: var(--color-accent);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .category-scroll-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .category-scroll-link:hover {
+            color: var(--color-text-main);
+        }
+
+        .category-scroll-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .category-image-frame {
+            height: 420px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+            background-color: #e6e2dd;
+        }
+
+        .category-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .category-image-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        footer {
+            padding: 140px 0;
+            background-color: var(--color-bg);
+        }
+
+        .cta-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .button {
+            -webkit-font-smoothing: antialiased;
+            border: none;
+            color: #fff;
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            user-select: none;
+            letter-spacing: 2px;
+            padding: 24px 50px;
+            text-transform: uppercase;
+            transition: all 0.1s ease-out;
+            text-align: center;
+            min-width: 360px;
+            border-radius: 35px;
+        }
+
+        .button-tg {
+            background-color: var(--color-tg-main);
+        }
+
+        .button-viber {
+            background-color: var(--color-viber-main);
+        }
+
+        .button-tg:hover {
+            background-color: var(--color-tg-hover);
+            color: #fff;
+        }
+        
+        .button-viber:hover {
+            background-color: var(--color-viber-hover);
+            color: #fff;
+        }
+        
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .button--bubble {
+            position: relative;
+            z-index: 2;
+            color: white;
+            background: none;
+        }
+
+        .button--bubble:hover {
+            background: none;
+        }
+
+        .button-tg + .button--bubble__effect-container .circle,
+        .button-tg + .button--bubble__effect-container .button {
+            background: var(--color-tg-main);
+        }
+        .button-tg:hover + .button--bubble__effect-container .circle,
+        .button-tg:hover + .button--bubble__effect-container .button {
+            background: var(--color-tg-hover);
+        }
+
+        .button-viber + .button--bubble__effect-container .circle,
+        .button-viber + .button--bubble__effect-container .button {
+            background: var(--color-viber-main);
+        }
+        .button-viber:hover + .button--bubble__effect-container .circle,
+        .button-viber:hover + .button--bubble__effect-container .button {
+            background: var(--color-viber-hover);
+        }
+
+        .button--bubble:active + .button--bubble__effect-container {
+            transform: scale(0.95);
+        }
+
+        .button--bubble__container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .button--bubble__container .effect-button {
+            position: absolute;
+            width: 50%;
+            height: 25%;
+            top: 50%;
+            left: 25%;
+            z-index: 1;
+            transform: translateY(-50%);
+            transition: background 0.1s ease-out;
+            border-radius: 20px;
+        }
+
+        .button--bubble__effect-container {
+            position: absolute;
+            display: block;
+            width: 200%;
+            height: 400%;
+            top: -150%;
+            left: -50%;
+            filter: url("#goo");
+            transition: all 0.1s ease-out;
+            pointer-events: none;
+        }
+
+        .button--bubble__effect-container .circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: background 0.1s ease-out;
+        }
+
+        .button--bubble__effect-container .circle.top-left {
+            top: 40%;
+            left: 27%;
+        }
+
+        .button--bubble__effect-container .circle.bottom-right {
+            bottom: 40%;
+            right: 27%;
+        }
+
+        .goo {
+            position: absolute;
+            visibility: hidden;
+            width: 1px;
+            height: 1px;
+        }
+
+        @media (max-width: 992px) {
+            .top-grid { grid-template-columns: 1fr; gap: 32px; }
+            .logo-placeholder { max-width: 300px; }
+            .chess-grid { grid-template-columns: 1fr; gap: 40px; }
+            .chess-grid.mobile-reverse { display: flex; flex-direction: column-reverse; }
+            .category-image-frame { height: 360px; }
+        }
+
+        @media (max-width: 768px) {
+            .cta-group {
+                flex-direction: column;
+                width: 100%;
+                max-width: 100%;
+                padding: 0 10px;
+                gap: 24px;
+            }
+            .button--bubble__container, .button { width: 100%; min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <section class="top-section">
+        <div class="container">
+            <h1>Якісна жіноча нижня білизна та колготки від виробника</h1>
+            <div class="top-grid">
+                <div class="logo-placeholder">
+                    <div class="logo-title">Dress Together</div>
+                    <div class="logo-subtitle">Online Store</div>
+                </div>
+                <div>
+                    <p class="welcome-text">
+                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякісну жіночу нижню білизну, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, ми поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="category-block bg-alt">
+        <div class="container">
+            <div class="chess-grid">
+                <div class="category-content">
+                    <h2>Жіночі трусики</h2>
+                    <p>Великий вибір актуальних жіночих моделей на будь-який смак: від класичних бавовняних сліпів та шортиків для щоденного комфорту до витончених мереживних стрінгів, бразиліана та елегантних моделей з високою посадкою. Використання якісних, дихаючих та гіпоалергенних матеріалів забезпечує чудову зносостійкість та ідеальну посадку на будь-яку фігуру.</p>
+                    <a href="#footer-section" class="category-scroll-link">Зв'язатись з нами ↓</a>
+                </div>
+                <div class="category-image-frame">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783782635/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_181002736_wqycxe.webp" alt="Жіночі трусики купити">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-block">
+        <div class="container">
+            <div class="chess-grid mobile-reverse">
+                <div class="category-image-frame">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783783559/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_182447031_leawmt.webp" alt="Бюстгальтери від виробника">
+                </div>
+                <div class="category-content">
+                    <h2>Бюстгальтери</h2>
+                    <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживні моделі, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
+                    <a href="#footer-section" class="category-scroll-link">Зв'язатись з нами ↓</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-block bg-alt">
+        <div class="container">
+            <div class="chess-grid">
+                <div class="category-content">
+                    <h2>Топи</h2>
+                    <p>Безшовні та спортивні топи в рубчик — головний тренд сучасної моди. Моделі зі знімними чашками, на тонких та широких бретелях забезпечують абсолютну свободу рухів. Еластична мікрофібра та бавовна преміум якості ідеально підходять як для активного відпочинку чи занять спортом, так і для стильних повсякденних образів.</p>
+                    <a href="#footer-section" class="category-scroll-link">Зв'язатись з нами ↓</a>
+                </div>
+                <div class="category-image-frame">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784034/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_183235202_nx1csa.webp" alt="Безшовні топи в Україні">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-block">
+        <div class="container">
+            <div class="chess-grid mobile-reverse">
+                <div class="category-image-frame">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784434/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_183948395_fp5wpn.webp" alt="Еластичні лосини та колготи">
+                </div>
+                <div class="category-content">
+                    <h2>Лосини та колготи</h2>
+                    <p>Капронові та класичні демісезонні колготи будь-якої щільності (від 15 до 200 DEN) з легким моделюючим ефектом, розподіленим тиском та плоскими комфортними швами. Також у лінійці представлені щільні лосини та легінси з високою посадкою, які чудово підкреслюють силует фігури та є незамінною базою для прохолодного сезону.</p>
+                    <a href="#footer-section" class="category-scroll-link">Зв'язатись з нами ↓</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-block bg-alt">
+        <div class="container">
+            <div class="chess-grid">
+                <div class="category-content">
+                    <h2>Чоловічі труси боксери</h2>
+                    <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. М'яка брендована або прихована резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
+                    <a href="#footer-section" class="category-scroll-link">Зв'язатись з нами ↓</a>
+                </div>
+                <div class="category-image-frame">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784849/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_184700969_hk8n8e.webp" alt="Чоловіча білизна боксери">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer-section">
+        <div class="container">
+            <div class="cta-group">
+                
+                <span class="button--bubble__container">
+                    <a href="viber://chat?number=%2B380000000000" class="button button--bubble button-viber">
+                        Зв'язатися у Viber
+                    </a>
+                    <span class="button--bubble__effect-container">
+                        <span class="circle top-left"></span>
+                        <span class="circle top-left"></span>
+                        <span class="circle top-left"></span>
+
+                        <span class="button effect-button"></span>
+
+                        <span class="circle bottom-right"></span>
+                        <span class="circle bottom-right"></span>
+                        <span class="circle bottom-right"></span>
+                    </span>
+                </span>
+
+                <span class="button--bubble__container">
+                    <a href="https://t.me/username" class="button button--bubble button-tg">
+                        Написати в Telegram
+                    </a>
+                    <span class="button--bubble__effect-container">
+                        <span class="circle top-left"></span>
+                        <span class="circle top-left"></span>
+                        <span class="circle top-left"></span>
+
+                        <span class="button effect-button"></span>
+
+                        <span class="circle bottom-right"></span>
+                        <span class="circle bottom-right"></span>
+                        <span class="circle bottom-right"></span>
+                    </span>
+                </span>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+
+    <script>
+        $('.button--bubble').each(function() {
+            var $button = $(this);
+            var $container = $button.parent();
+            var $circlesTopLeft = $container.find('.circle.top-left');
+            var $circlesBottomRight = $container.find('.circle.bottom-right');
+            var $effectButton = $container.find('.button.effect-button');
+
+            var tl = new TimelineLite();
+            var tl2 = new TimelineLite();
+            var btTl = new TimelineLite({ paused: true });
+
+            tl.to($circlesTopLeft, 1.2, { x: -25, y: -25, scaleY: 2, ease: SlowMo.ease.config(0.1, 0.7, false) });
+            tl.to($circlesTopLeft.eq(0), 0.1, { scale: 0.2, x: '+=6', y: '-=2' });
+            tl.to($circlesTopLeft.eq(1), 0.1, { scaleX: 1, scaleY: 0.8, x: '-=10', y: '-=7' }, '-=0.1');
+            tl.to($circlesTopLeft.eq(2), 0.1, { scale: 0.2, x: '-=15', y: '+=6' }, '-=0.1');
+            tl.to($circlesTopLeft.eq(0), 1, { scale: 0, x: '-=5', y: '-=15', opacity: 0 });
+            tl.to($circlesTopLeft.eq(1), 1, { scaleX: 0.4, scaleY: 0.4, x: '-=10', y: '-=10', opacity: 0 }, '-=1');
+            tl.to($circlesTopLeft.eq(2), 1, { scale: 0, x: '-=15', y: '+=5', opacity: 0 }, '-=1');
+
+            var tlBt1 = new TimelineLite();
+            tlBt1.set($circlesTopLeft, { x: 0, y: 0, rotation: -45, scale: 1, scaleX: 1, scaleY: 1, opacity: 1 });
+            tlBt1.add(tl);
+
+            tl2.set($circlesBottomRight, { x: 0, y: 0, scale: 1, opacity: 1 });
+            tl2.to($circlesBottomRight, 1.1, { x: 30, y: 30, ease: SlowMo.ease.config(0.1, 0.7, false) });
+            tl2.to($circlesBottomRight.eq(0), 0.1, { scale: 0.2, x: '-=6', y: '+=3' });
+            tl2.to($circlesBottomRight.eq(1), 0.1, { scale: 0.8, x: '+=7', y: '+=3' }, '-=0.1');
+            tl2.to($circlesBottomRight.eq(2), 0.1, { scale: 0.2, x: '+=15', y: '-=6' }, '-=0.2');
+            tl2.to($circlesBottomRight.eq(0), 1, { scale: 0, x: '+=5', y: '+=15', opacity: 0 });
+            tl2.to($circlesBottomRight.eq(1), 1, { scale: 0.4, x: '+=7', y: '+=7', opacity: 0 }, '-=1');
+            tl2.to($circlesBottomRight.eq(2), 1, { scale: 0, x: '+=15', y: '-=5', opacity: 0 }, '-=1');
+            
+            var tlBt2 = new TimelineLite();
+            tlBt2.set($circlesBottomRight, { x: 0, y: 0, rotation: 45, scale: 1, opacity: 1 });
+            tlBt2.add(tl2);
+
+            btTl.add(tlBt1);
+            btTl.to($effectButton, 0.8, { scaleY: 1.1 }, 0.1);
+            btTl.add(tlBt2, 0.2);
+            btTl.to($effectButton, 1.8, { scale: 1, ease: Elastic.easeOut.config(1.2, 0.4) }, 1.2);
+
+            btTl.timeScale(2.6);
+
+            $button.on('mouseover', function() {
+                btTl.restart();
+            });
+        });
+    </script>
+</body>
+</html>
