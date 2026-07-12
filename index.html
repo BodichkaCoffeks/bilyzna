@@ -6,7 +6,7 @@
     <title>Dress Together | Якісна жіноча та чоловіча білизна від виробника</title>
     <meta name="description" content="Інтернет-магазин Dress Together: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери від виробника за найкращими цінами в Україні.">
     
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -16,7 +16,7 @@
             --color-text-main: #252422;
             --color-text-muted: #5c5a54;
             --color-accent: #4a3b32;
-            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --font-stack: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             
             --color-tg-main: #0088cc;
             --color-tg-hover: #0077b3;
@@ -24,6 +24,9 @@
             --color-viber-main: #7360f2;
             --color-viber-hover: #5f4edb;
             --color-viber-dark: #4b3ca6;
+
+            --color-circle-bg: #c2b4a6; 
+            --color-circle-hover: #b5a596;
         }
 
         * {
@@ -43,75 +46,104 @@
             color: var(--color-text-main);
             line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(74, 59, 50, 0.03) 0%, rgba(74, 59, 50, 0.01) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 10%;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(74, 59, 50, 0.03) 0%, rgba(74, 59, 50, 0.01) 100%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1600px; /* Збільшено ширину для кращого масштабу великих блоків */
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 50px;
             position: relative;
             z-index: 2;
         }
 
+        /* ==========================================================================
+           ПЕРША СЕКЦІЯ (TOP SECTION)
+           ========================================================================== */
         .top-section {
-            padding: 60px 0 40px 0;
+            min-height: 100vh; 
+            display: flex;
+            align-items: center; 
+            padding: 100px 0;
+            box-sizing: border-box;
         }
 
         h1 {
-            font-size: clamp(28px, 4.5vw, 46px);
+            font-size: clamp(36px, 5.5vw, 62px); 
             font-weight: 800;
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-            margin-bottom: 40px;
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 70px; 
             color: var(--color-text-main);
+            max-width: 95%;
         }
 
         .top-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 50px;
-            align-items: start;
+            grid-template-columns: 450px 1fr; 
+            gap: 100px; 
+            align-items: center; 
         }
 
         .logo-placeholder {
-            background-color: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 16px;
-            padding: 40px 24px;
+            background-color: transparent;
+            border: none;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 30px rgba(74, 59, 50, 0.03);
+            justify-content: flex-start;
+            min-height: auto;
+            flex-shrink: 0;
         }
 
-        .logo-title {
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--color-accent);
-            margin-bottom: 6px;
-            text-align: center;
-        }
-
-        .logo-subtitle {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--color-text-muted);
-            font-weight: 500;
+        .logo-placeholder img {
+            width: 100%; 
+            height: 420px; 
+            max-height: 420px;
+            object-fit: contain;
         }
 
         .welcome-text {
-            font-size: 16px;
+            font-size: 21px; /* Збільшено шрифт вітального тексту */
             color: var(--color-text-muted);
             text-align: justify;
+            line-height: 1.8;
+            margin: 0;
         }
 
+        /* ==========================================================================
+           ДИЗАЙН КАРТОК КАТЕГОРІЙ (ЗБІЛЬШЕНІ БЛОКИ)
+           ========================================================================== */
         .category-block {
-            padding: 100px 0;
+            padding: 120px 0; /* Збільшено відступи між секціями */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
         }
 
         .category-block.bg-alt {
@@ -122,28 +154,58 @@
             background-color: var(--color-men-boxers);
         }
 
-        .chess-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
+        .category-card {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0;
+            width: 100%;
             position: relative;
             z-index: 2;
         }
 
+        .chess-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.4fr; /* Оптимізовано пропорції під більші елементи */
+            gap: 120px; /* Збільшено відстань між текстом та колом */
+            align-items: center;
+            width: 100%;
+        }
+
+        /* ЗБІЛЬШЕНИЙ ТЕКСТОВИЙ БЛОК */
+        .category-content {
+            width: 100%;
+            max-width: 640px; /* Збільшено ширину з 520px */
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 50, 0.08);
+            border-radius: 40px; /* Більш плавні закруглення */
+            padding: 65px 55px;  /* Збільшено внутрішні поля */
+            box-shadow: 0 20px 50px rgba(74, 59, 50, 0.04), 
+                        inset 0 1px 0 #ffffff;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .category-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 65px rgba(74, 59, 50, 0.08), 
+                        inset 0 1px 0 #ffffff;
+        }
+
         .category-content h2 {
-            font-size: clamp(24px, 3vw, 32px);
+            font-size: clamp(28px, 3.5vw, 34px); /* Збільшено розмір заголовків категорій */
             font-weight: 700;
-            margin-bottom: 24px;
+            margin-bottom: 25px;
             position: relative;
             display: inline-block;
+            color: var(--color-text-main);
         }
 
         .category-content h2::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: -6px;
+            bottom: -8px;
             width: 50px;
             height: 3px;
             background-color: var(--color-accent);
@@ -152,88 +214,102 @@
 
         .category-content p {
             color: var(--color-text-muted);
-            font-size: 16px;
+            font-size: 17px; /* Збільшено шрифт опису товарів з 15px */
             text-align: justify;
+            line-height: 1.8;
         }
 
-        .category-scroll-link {
-            display: inline-flex;
-            align-items: center;
-            margin-top: 28px;
-            color: var(--color-accent);
-            font-weight: 700;
-            font-size: 17px;
-            text-decoration: none;
-            position: relative;
-            padding: 6px 0;
-            letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-
-        .category-scroll-link::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 2px;
-            background-color: var(--color-accent);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .category-scroll-link:hover {
-            color: var(--color-text-main);
-        }
-
-        .category-scroll-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .category-scroll-link .arrow {
-            display: inline-block;
-            margin-left: 8px;
-            font-size: 20px;
-            animation: arrow-bounce 1.6s infinite ease-in-out;
-        }
-
-        @keyframes arrow-bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(5px); }
-        }
-
+        /* ЗБІЛЬШЕНЕ КОЛО ДЛЯ ЗОБРАЖЕННЯ */
         .category-image-frame {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
-            background-color: #e6e2dd;
+            width: 560px; /* Збільшено з 460px */
+            height: 560px; /* Збільшено з 460px */
+            border-radius: 50%; 
+            background-color: var(--color-circle-bg); 
+            border: 1px solid rgba(74, 59, 50, 0.05); 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            position: relative;
+            overflow: visible; 
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+            cursor: pointer;
+        }
+
+        .chess-grid.mobile-reverse .category-image-frame {
+            margin-left: 0;
+            margin-right: auto;
         }
 
         .category-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
+            width: 85%; 
+            height: 85%;
+            object-fit: contain; 
+            position: relative;
+            z-index: 2;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* АНІМАЦІЯ ПРИ НАВЕДЕННІ СУВОРO НА КОЛО */
+        .category-image-frame:hover {
+            transform: scale(1.03);
+            background-color: var(--color-circle-hover); 
         }
 
         .category-image-frame:hover img {
             transform: scale(1.05);
         }
 
+        /* ПОСИЛАННЯ */
+        .category-scroll-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 35px;
+            color: var(--color-accent);
+            font-weight: 700;
+            font-size: 18px; /* Трішки збільшено лінк */
+            text-decoration: none;
+            position: relative;
+            padding: 6px 0;
+            letter-spacing: 0.5px;
+        }
+
+        .category-scroll-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--color-accent);
+            transform-origin: bottom left;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .category-scroll-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .category-scroll-link .arrow {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 20px;
+            animation: point-down 1.6s infinite ease-in-out;
+        }
+
+        @keyframes point-down {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
         /* ==========================================================================
            БЛОК ЗВ'ЯЗКУ
            ========================================================================== */
-
         .standalone-contact-section {
             position: relative;
             z-index: 1;
-            padding: 100px 0;
+            padding: 120px 0;
             background-color: #8D7A6B;
             overflow: hidden;
         }
@@ -242,32 +318,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 60px;
+            gap: 80px;
             width: 100%;
         }
 
         .footer-cta-text {
             flex: 1;
             text-align: left;
-            max-width: 540px;
+            max-width: 650px;
             margin: 0;
             position: relative;
             z-index: 2;
         }
 
         .footer-cta-text h3 {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: 700;
             letter-spacing: -0.5px;
             color: #FFFFFF;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
         .footer-cta-text p {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 400;
             color: #FDFBF7;
-            line-height: 1.7;
+            line-height: 1.8;
             text-align: justify;
         }
 
@@ -281,13 +357,12 @@
         }
 
         .messenger-heading {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #FDFBF7;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
         }
 
         .cta-group {
@@ -304,7 +379,7 @@
             border: none;
             color: #fff;
             display: block;
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-stack);
             height: 70px;
             line-height: 70px;
             text-decoration: none;
@@ -375,37 +450,16 @@
             height: 1px;
         }
 
-        /* ==========================================================================
-           ДИНАМІЧНА ЛОГІКА ДЛЯ ДЕСКТОПІВ (МАСШТАБУВАННЯ ПРАЦЮЄ ЧІТКО)
-           ========================================================================== */
         @media (min-width: 1024px) {
-            .button {
-                transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400);
-            }
-            .button span {
-                transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400);
-            }
-            .button .icon {
-                transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400);
-            }
-            .button .icon img {
-                transition: all 0.25s ease;
-            }
+            .button { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
+            .button span { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
+            .button .icon { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
+            .button .icon img { transition: all 0.25s ease; }
             
-            .button:hover span {
-                left: -75%;
-                opacity: 0;
-            }
-            .button:hover .icon {
-                width: 100%;
-            }
-            .button:hover .icon img {
-                width: 32px;
-                height: 32px;
-            }
-            .button:active {
-                transform: scale(0.95);
-            }
+            .button:hover span { left: -75%; opacity: 0; }
+            .button:hover .icon { width: 100%; }
+            .button:hover .icon img { width: 32px; height: 32px; }
+            .button:active { transform: scale(0.95); }
             
             .button-tg + .button--bubble__effect-container .circle,
             .button-tg + .button--bubble__effect-container .button { background: var(--color-tg-main); }
@@ -452,93 +506,77 @@
             }
         }
 
+        /* АДАПТИВНІСТЬ ДЛЯ ЕКРАНІВ НОУТБУКІВ (Коректуємо гігантські кола на середніх екранах) */
+        @media (max-width: 1399px) {
+            .chess-grid { gap: 60px; }
+            .category-image-frame { width: 460px; height: 460px; }
+            .category-content { padding: 45px 40px; }
+        }
+
         /* ==========================================================================
-           СТАТИЧНИЙ СТИЛЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ (БЕЗ АНІМАЦІЙ)
+           СТАТИЧНИЙ СТИЛЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ
            ========================================================================== */
         @media (max-width: 1023px) {
-            body { overflow-x: hidden; position: relative; }
             .container { padding: 0 20px; }
-            .top-section { padding: 40px 0 20px 0; }
-            h1 { font-size: clamp(22px, 6vw, 32px); text-align: center; margin-bottom: 24px; }
-            .top-grid { grid-template-columns: 1fr; gap: 24px; justify-items: center; }
-            .logo-placeholder { width: 100%; max-width: 320px; padding: 24px; }
-            .welcome-text { text-align: center; font-size: 15px; line-height: 1.6; }
-            .category-block { padding: 48px 0; }
+            
+            .top-section { padding: 50px 0 30px 0; }
+            h1 { font-size: clamp(24px, 6vw, 36px); text-align: center; margin-bottom: 30px; }
+            .top-grid { grid-template-columns: 1fr; gap: 40px; justify-items: center; }
+            .logo-placeholder { justify-content: center; margin-bottom: 10px; width: 100%; max-width: 320px; }
+            .logo-placeholder img { height: 320px; max-height: 320px; }
+            .welcome-text { text-align: center; font-size: 18px; }
+            
+            .category-block { padding: 60px 0; }
             
             .chess-grid {
                 display: flex !important;
                 flex-direction: column-reverse !important; 
-                gap: 24px;
+                gap: 35px;
+                align-items: center;
             }
             .chess-grid.mobile-reverse { flex-direction: column !important; }
             
             .category-image-frame { 
-                width: 100%;
-                max-width: 420px;
+                width: 320px !important;
+                height: 320px !important;
+                margin: 0 auto !important;
+            }
+            .category-image-frame:hover { transform: none !important; background-color: var(--color-circle-bg) !important; }
+            .category-image-frame:hover img { transform: none !important; }
+            
+            .category-content { 
+                text-align: center; 
+                padding: 40px 28px; 
                 margin: 0 auto;
-                aspect-ratio: 1 / 1 !important; 
-                border-radius: 16px; 
+                max-width: 100%;
+                border-radius: 30px;
             }
-            
-            .category-content { text-align: center; padding: 0 10px; }
-            .category-content h2 { font-size: 24px; margin-bottom: 20px; }
+            .category-content h2 { font-size: 26px; margin-bottom: 18px; }
             .category-content h2::after { left: 50%; transform: translateX(-50%); }
-            .category-content p { text-align: center; font-size: 15px; line-height: 1.6; }
-            .category-scroll-link { margin-top: 20px; justify-content: center; font-size: 16px; }
+            .category-content p { text-align: center; font-size: 15px; }
+            .category-scroll-link { margin-top: 25px; justify-content: center; font-size: 16px; }
+            .category-scroll-link::after { display: none; }
 
-            .standalone-contact-section { padding: 70px 0; }
-
-            .contact-flex-layout {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 40px;
-            }
-
-            .footer-cta-text { 
-                text-align: center !important;
-                max-width: 100%;
-            }
-            .footer-cta-text h3 { font-size: 28px; }
-            .footer-cta-text p { text-align: center; font-size: 15px; }
-
-            .footer-actions-right {
-                align-items: center !important;
-                text-align: center !important;
-                width: 100%;
-            }
-
-            .messenger-heading { margin-bottom: 20px; }
-
-            .cta-group {
-                flex-direction: column !important;
-                justify-content: center !important;
-                width: 100%;
-                gap: 20px !important;
-            }
-            
-            .button--bubble__container { 
-                display: block; 
-                width: 280px; 
-                max-width: 100%;
-            }
-            
-            .button { 
-                width: 100%;
-                max-width: 100%;
-                transform: none !important;
-                transition: none !important;
-            }
+            .standalone-contact-section { padding: 80px 0; }
+            .contact-flex-layout { flex-direction: column !important; gap: 40px; }
+            .footer-cta-text { text-align: center !important; }
+            .footer-cta-text h3 { font-size: 32px; }
+            .footer-cta-text p { text-align: center; font-size: 16px; }
+            .cta-group { flex-direction: column !important; width: 100%; gap: 20px !important; }
+            .button--bubble__container { display: block; width: 280px; }
+            .button { width: 100%; transform: none !important; transition: none !important; }
             .button-viber { background-color: var(--color-viber-main) !important; }
             .button-tg { background-color: var(--color-tg-main) !important; }
-            
-            .button--bubble__effect-container { 
-                display: none !important; 
-            }
+            .button--bubble__effect-container { display: none !important; }
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 22px; }
-            .button--bubble__container { width: 250px; }
+            h1 { font-size: 24px; }
+            .button--bubble__container { width: 260px; }
+            .category-image-frame { 
+                width: 260px !important;
+                height: 260px !important;
+            }
         }
     </style>
 </head>
@@ -559,12 +597,11 @@
             <h1>Якісна жіноча нижня білизна та колготки від виробника</h1>
             <div class="top-grid">
                 <div class="logo-placeholder">
-                    <div class="logo-title">Dress Together</div>
-                    <div class="logo-subtitle">Online Store</div>
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783883114/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_220511338_fmfsgd.png" alt="Dress Together">
                 </div>
                 <div>
                     <p class="welcome-text">
-                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякіську жіночу нижню білизна, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, ми поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
+                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякіську жіночу нижню білизна, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, мы поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
                     </p>
                 </div>
             </div>
@@ -573,14 +610,16 @@
     
     <section class="category-block bg-alt">
         <div class="container">
-            <div class="chess-grid">
-                <div class="category-content">
-                    <h2>Жіночі трусики</h2>
-                    <p>Великий вибір актуальних жіночих моделей на будь-який вкус: від класичних бавовняних сліпів та шортиків для щоденного комфорту до витончених мереживних стрінгів, бразиліана та елегантних моделей з високою посадкою. Використання якісних, дихаючих та гіпоалергенних матеріалів забезпечує чудову зносостійкість та ідеальну посадку на будь-яку фігуру.</p>
-                    <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
-                </div>
-                <div class="category-image-frame">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783782635/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_181002736_wqycxe.webp" alt="Жіночі трусики купити">
+            <div class="category-card">
+                <div class="chess-grid">
+                    <div class="category-content">
+                        <h2>Жіночі трусики</h2>
+                        <p>Великий вибір актуальних жіночих моделей на будь-який вкус: від класичних бавовняних сліпів та шортиків для щоденного комфорту до витончених мереживних стрінгів, бразиліана та елегантних моделей з високою посадкою. Використання якісних, дихаючих та гіпоалергенних матеріалів забезпечує чудову зносостійкість та ідеальну посадку на будь-яку фігуру.</p>
+                        <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+                    </div>
+                    <div class="category-image-frame">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783873993/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_193309855_gqirag.png" alt="Жіночі трусики купити" style="width: 100%; height: 100%;">
+                    </div>
                 </div>
             </div>
         </div>
@@ -588,14 +627,16 @@
 
     <section class="category-block">
         <div class="container">
-            <div class="chess-grid mobile-reverse">
-                <div class="category-image-frame">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783783559/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_182447031_leawmt.webp" alt="Бюстгальтери від виробника">
-                </div>
-                <div class="category-content">
-                    <h2>Бюстгальтери</h2>
-                    <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживні моделі, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
-                    <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+            <div class="category-card">
+                <div class="chess-grid mobile-reverse">
+                    <div class="category-image-frame">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783877927/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_203842843_dn7xgv.png" alt="Бюстгальтери від виробника">
+                    </div>
+                    <div class="category-content">
+                        <h2>Бюстгальтери</h2>
+                        <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживни моделі, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
+                        <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -603,14 +644,16 @@
 
     <section class="category-block bg-alt">
         <div class="container">
-            <div class="chess-grid">
-                <div class="category-content">
-                    <h2>Топи</h2>
-                    <p>Безшовні та спортивні топи в рубчик — головний тренд сучасної моди. Моделі зі знімними чашками, на тонких та широких бретелях забезпечують абсолютну свободу рухів. Еластична мікрофібра та бавовна преміум якості ідеально підходять як для активного відпочинку чи занять спортом, так і для стильних повсякденних образів.</p>
-                    <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
-                </div>
-                <div class="category-image-frame">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784034/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_183235202_nx1csa.webp" alt="Безшовні топи в Україні">
+            <div class="category-card">
+                <div class="chess-grid">
+                    <div class="category-content">
+                        <h2>Топи</h2>
+                        <p>Безшовні та спортивні топи в рубчик — головний тренд сучасної моди. Моделі зі знімними чашками, на тонких та широких бретелях забезпечують абсолютну свободу рухів. Еластична мікрофібра та бавовна преміум якості ідеально підходять як для активного відпочинку чи занять спортом, так і для стильних повсякденних образів.</p>
+                        <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+                    </div>
+                    <div class="category-image-frame">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783878282/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_204437408_jxr26q.png" alt="Безшовні топи в Україні">
+                    </div>
                 </div>
             </div>
         </div>
@@ -618,14 +661,16 @@
 
     <section class="category-block">
         <div class="container">
-            <div class="chess-grid mobile-reverse">
-                <div class="category-image-frame">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784434/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_183948395_fp5wpn.webp" alt="Еластичні лосини та колготи">
-                </div>
-                <div class="category-content">
-                    <h2>Лосини та колготи</h2>
-                    <p>Капронові та класичні демісезонні колготи будь-якої щільності (від 15 до 200 DEN) з легким моделюючим ефектом, розподіленим тиском та плоскими комфортними швами. Також у лінійці представлені щільні лосини та легінси з високою посадкою, які чудово підкреслюють силует фігури та є незамінною базою для прохолодного сезону.</p>
-                    <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+            <div class="category-card">
+                <div class="chess-grid mobile-reverse">
+                    <div class="category-image-frame">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783879503/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_210430701_diqkeg.png" alt="Еластичні лосини та колготи">
+                    </div>
+                    <div class="category-content">
+                        <h2>Лосини та колготи</h2>
+                        <p>Капронові та класичні демісезонні колготи будь-якої щільності (від 15 до 200 DEN) з легким моделюючим ефектом, розподіленим тиском та плоскими комфортними швами. Також у лінійці представлені щільні лосини та легінси з високою посадкою, які чудово підкреслюють силует фігури та є незамінною базою для прохолодного сезону.</p>
+                        <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -633,38 +678,35 @@
 
     <section class="category-block bg-men-boxers">
         <div class="container">
-            <div class="chess-grid">
-                <div class="category-content">
-                    <h2>Чоловічі труси боксери</h2>
-                    <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. М'яка брендована або прихована резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
-                    <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
-                </div>
-                <div class="category-image-frame">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783784849/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-11_184700969_hk8n8e.webp" alt="Чоловіча білизна боксери">
+            <div class="category-card">
+                <div class="chess-grid">
+                    <div class="category-content">
+                        <h2>Чоловічі труси боксери</h2>
+                        <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. M'яка брендована або прихована резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
+                        <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
+                    </div>
+                    <div class="category-image-frame">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783879631/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_210635265_e7b6sq.png" alt="Чоловіча білизна боксери" style="width: 70%; height: 70%;">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- СТАЦІОНАРНИЙ БЛОК ЗВ'ЯЗКУ (ФУТЕР) -->
     <section id="contact-section" class="standalone-contact-section">
         <div class="container">
             <div class="contact-flex-layout">
-                
-                <!-- ЛІВА КОЛОНКА: Текст -->
                 <div class="footer-cta-text">
                     <h3>Зв'яжіться з нами</h3>
                     <p>
-                        Маєте запитання щодо асортименту, наявності кольорів або не впевнені, який розмір підійде саме вам? Наша команда підтримки працює без вихідних і завжди готова надати персональну консультацію. Ми детально розповімо про особливості матеріалів кожної моделі, допоможемо підібрати ідеальну посадку за вашими індивідуальними замірами та оперативно допоможемо з оформленням швидкого замовлення.
+                        Маєте запитання щодо асортименту, наявності кольорів або не впевнені, який размер підійде саме вам? Наша команда підтримки працює без вихідних і завжди готова надати персональну консультацію. Ми детально розповімо про особливості матеріалів кожної модели, допоможемо підібрати ідеальну посадку за вашими індивідуальними замірами та оперативно допоможемо з оформленням швидкого замовлення.
                     </p>
                 </div>
 
-                <!-- ПРАВА КОЛОНКА -->
                 <div class="footer-actions-right">
                     <div class="messenger-heading">Пишіть у зручний для вас месенджер</div>
                     
                     <div class="cta-group">
-                        <!-- Кнопка Viber -->
                         <span class="button--bubble__container">
                             <a href="viber://chat?number=%2B380000000000" class="button button--bubble button-viber">
                                 <span>Viber</span>
@@ -683,7 +725,6 @@
                             </span>
                         </span>
 
-                        <!-- Кнопка Telegram -->
                         <span class="button--bubble__container">
                             <a href="https://t.me/username" class="button button--bubble button-tg">
                                 <span>Telegram</span>
@@ -703,7 +744,6 @@
                         </span>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -712,8 +752,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
     <script>
-        // Ініціалізуємо GSAP завжди, щоб анімація не "ламалась" при зміні масштабів на ПК.
-        // Блокування відображення ефектів тепер надійно контролюється виключно через CSS медіазапити (@media).
         $('.button--bubble').each(function() {
             var $button = $(this);
             var $container = $button.parent();
@@ -758,7 +796,6 @@
             btTl.timeScale(2.6);
 
             $button.on('mouseenter', function() {
-                // Запускаємо скрипт лише якщо подія відбувається на десктопній версії екрана
                 if (window.innerWidth > 1023 && !btTl.isActive()) {
                     btTl.restart();
                 }
