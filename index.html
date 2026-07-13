@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dress Together | Якісна жіноча та чоловіча білизна від виробника</title>
-    <meta name="description" content="Інтернет-магазин Dress Together: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери від виробника за найкращими цінами в Україні.">
+    <title>L’Amour Lingerie | Нижня білизна для вашого комфорту</title>
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dzqwklovt/image/upload/v1783949195/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_162633243_xetuia.png">
+    <meta name="description" content="Інтернет-магазин L’Amour Lingerie: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери за найкращими цінами в Украине.">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -33,6 +34,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        a, button, [role="button"], .category-image-frame {
+            outline: none;
         }
 
         html {
@@ -49,38 +55,36 @@
             position: relative;
         }
 
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(74, 59, 50, 0.03) 0%, rgba(74, 59, 50, 0.01) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 10%;
-            width: 1px;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(74, 59, 50, 0.03) 0%, rgba(74, 59, 50, 0.01) 100%);
-            z-index: 1;
-            pointer-events: none;
-        }
-
         .container {
             width: 100%;
-            max-width: 1600px; /* Збільшено ширину для кращого масштабу великих блоків */
+            max-width: 1600px; 
             margin: 0 auto;
             padding: 0 50px;
             position: relative;
             z-index: 2;
         }
+
+        /* ==========================================================================
+           СТАНДАРТНІ СТИЛІ ДЛЯ АНІМАЦІЇ ВИПЛИВАННЯ ЗНИЗУ
+           ========================================================================== */
+        .animate-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
+                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform, opacity;
+        }
+
+        /* Клас, який додаватиметься через JS, коли елемент стає видимим */
+        .animate-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Ефект каскадної затримки для елементів першого екрана */
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.3s; }
+        .delay-3 { transition-delay: 0.5s; }
 
         /* ==========================================================================
            ПЕРША СЕКЦІЯ (TOP SECTION)
@@ -128,7 +132,7 @@
         }
 
         .welcome-text {
-            font-size: 21px; /* Збільшено шрифт вітального тексту */
+            font-size: 21px; 
             color: var(--color-text-muted);
             text-align: justify;
             line-height: 1.8;
@@ -139,7 +143,7 @@
            ДИЗАЙН КАРТОК КАТЕГОРІЙ (ЗБІЛЬШЕНІ БЛОКИ)
            ========================================================================== */
         .category-block {
-            padding: 120px 0; /* Збільшено відступи між секціями */
+            padding: 120px 0; 
             position: relative;
             overflow: hidden;
             display: flex;
@@ -166,20 +170,19 @@
 
         .chess-grid {
             display: grid;
-            grid-template-columns: 1.2fr 1.4fr; /* Оптимізовано пропорції під більші елементи */
-            gap: 120px; /* Збільшено відстань між текстом та колом */
+            grid-template-columns: 1.2fr 1.4fr; 
+            gap: 120px; 
             align-items: center;
             width: 100%;
         }
 
-        /* ЗБІЛЬШЕНИЙ ТЕКСТОВИЙ БЛОК */
         .category-content {
             width: 100%;
-            max-width: 640px; /* Збільшено ширину з 520px */
+            max-width: 640px; 
             background: #ffffff;
             border: 1px solid rgba(74, 59, 50, 0.08);
-            border-radius: 40px; /* Більш плавні закруглення */
-            padding: 65px 55px;  /* Збільшено внутрішні поля */
+            border-radius: 40px; 
+            padding: 65px 55px;  
             box-shadow: 0 20px 50px rgba(74, 59, 50, 0.04), 
                         inset 0 1px 0 #ffffff;
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
@@ -193,7 +196,7 @@
         }
 
         .category-content h2 {
-            font-size: clamp(28px, 3.5vw, 34px); /* Збільшено розмір заголовків категорій */
+            font-size: clamp(28px, 3.5vw, 34px); 
             font-weight: 700;
             margin-bottom: 25px;
             position: relative;
@@ -214,15 +217,14 @@
 
         .category-content p {
             color: var(--color-text-muted);
-            font-size: 17px; /* Збільшено шрифт опису товарів з 15px */
+            font-size: 17px; 
             text-align: justify;
             line-height: 1.8;
         }
 
-        /* ЗБІЛЬШЕНЕ КОЛО ДЛЯ ЗОБРАЖЕННЯ */
         .category-image-frame {
-            width: 560px; /* Збільшено з 460px */
-            height: 560px; /* Збільшено з 460px */
+            width: 560px; 
+            height: 560px; 
             border-radius: 50%; 
             background-color: var(--color-circle-bg); 
             border: 1px solid rgba(74, 59, 50, 0.05); 
@@ -232,13 +234,43 @@
             margin-left: auto;
             position: relative;
             overflow: visible; 
-            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+            transition: background-color 0.4s ease;
             cursor: pointer;
+            animation: float-frame 6s ease-in-out infinite;
+        }
+
+        .category-image-frame::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(194, 180, 166, 0.6);
+            animation: pulse-frame 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes float-frame {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse-frame {
+            0% { box-shadow: 0 0 0 0 rgba(194, 180, 166, 0.6); }
+            70% { box-shadow: 0 0 0 25px rgba(194, 180, 166, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(194, 180, 166, 0); }
         }
 
         .chess-grid.mobile-reverse .category-image-frame {
             margin-left: 0;
             margin-right: auto;
+        }
+
+        .category-image-frame:hover {
+            background-color: var(--color-circle-hover); 
         }
 
         .category-image-frame img {
@@ -250,24 +282,17 @@
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* АНІМАЦІЯ ПРИ НАВЕДЕННІ СУВОРO НА КОЛО */
-        .category-image-frame:hover {
-            transform: scale(1.03);
-            background-color: var(--color-circle-hover); 
-        }
-
         .category-image-frame:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
-        /* ПОСИЛАННЯ */
         .category-scroll-link {
             display: inline-flex;
             align-items: center;
             margin-top: 35px;
             color: var(--color-accent);
             font-weight: 700;
-            font-size: 18px; /* Трішки збільшено лінк */
+            font-size: 18px; 
             text-decoration: none;
             position: relative;
             padding: 6px 0;
@@ -506,7 +531,6 @@
             }
         }
 
-        /* АДАПТИВНІСТЬ ДЛЯ ЕКРАНІВ НОУТБУКІВ (Коректуємо гігантські кола на середніх екранах) */
         @media (max-width: 1399px) {
             .chess-grid { gap: 60px; }
             .category-image-frame { width: 460px; height: 460px; }
@@ -514,31 +538,32 @@
         }
 
         /* ==========================================================================
-           СТАТИЧНИЙ СТИЛЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ
+           ОПТИМІЗОВАНИЙ СТИЛЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ
            ========================================================================== */
         @media (max-width: 1023px) {
-            .container { padding: 0 20px; }
+            .container { padding: 0 24px; }
             
-            .top-section { padding: 50px 0 30px 0; }
-            h1 { font-size: clamp(24px, 6vw, 36px); text-align: center; margin-bottom: 30px; }
+            .top-section { padding: 60px 0 40px 0; }
+            h1 { font-size: clamp(26px, 6.5vw, 38px); text-align: center; margin-bottom: 35px; }
             .top-grid { grid-template-columns: 1fr; gap: 40px; justify-items: center; }
-            .logo-placeholder { justify-content: center; margin-bottom: 10px; width: 100%; max-width: 320px; }
-            .logo-placeholder img { height: 320px; max-height: 320px; }
-            .welcome-text { text-align: center; font-size: 18px; }
             
-            .category-block { padding: 60px 0; }
+            .logo-placeholder { justify-content: center; margin: 0 auto 10px auto; width: 100%; max-width: 320px; }
+            .logo-placeholder img { height: 320px; max-height: 320px; }
+            .welcome-text { text-align: center; font-size: 17px; line-height: 1.7; }
+            
+            .category-block { padding: 50px 0; }
             
             .chess-grid {
                 display: flex !important;
                 flex-direction: column-reverse !important; 
-                gap: 35px;
+                gap: 30px;
                 align-items: center;
             }
             .chess-grid.mobile-reverse { flex-direction: column !important; }
             
             .category-image-frame { 
-                width: 320px !important;
-                height: 320px !important;
+                width: 310px !important;
+                height: 310px !important;
                 margin: 0 auto !important;
             }
             .category-image-frame:hover { transform: none !important; background-color: var(--color-circle-bg) !important; }
@@ -546,24 +571,31 @@
             
             .category-content { 
                 text-align: center; 
-                padding: 40px 28px; 
+                padding: 35px 25px; 
                 margin: 0 auto;
                 max-width: 100%;
-                border-radius: 30px;
+                border-radius: 28px;
             }
-            .category-content h2 { font-size: 26px; margin-bottom: 18px; }
+            .category-content:hover { transform: none !important; box-shadow: 0 20px 50px rgba(74, 59, 50, 0.04) !important; }
+            .category-content h2 { font-size: 25px; margin-bottom: 16px; }
             .category-content h2::after { left: 50%; transform: translateX(-50%); }
-            .category-content p { text-align: center; font-size: 15px; }
+            
+            .category-content p { text-align: center; font-size: 15px; line-height: 1.7; }
+            
             .category-scroll-link { margin-top: 25px; justify-content: center; font-size: 16px; }
             .category-scroll-link::after { display: none; }
 
-            .standalone-contact-section { padding: 80px 0; }
-            .contact-flex-layout { flex-direction: column !important; gap: 40px; }
-            .footer-cta-text { text-align: center !important; }
-            .footer-cta-text h3 { font-size: 32px; }
-            .footer-cta-text p { text-align: center; font-size: 16px; }
-            .cta-group { flex-direction: column !important; width: 100%; gap: 20px !important; }
-            .button--bubble__container { display: block; width: 280px; }
+            .standalone-contact-section { padding: 70px 0; }
+            .contact-flex-layout { flex-direction: column !important; gap: 45px; }
+            .footer-cta-text { text-align: center !important; max-width: 100%; }
+            .footer-cta-text h3 { font-size: 30px; margin-bottom: 15px; }
+            .footer-cta-text p { text-align: center; font-size: 15px; line-height: 1.7; }
+            
+            .footer-actions-right { max-width: 100%; }
+            .messenger-heading { font-size: 13px; margin-bottom: 25px; }
+            .cta-group { flex-direction: column !important; width: 100%; gap: 16px !important; }
+            .button--bubble__container { display: block; width: 100%; max-width: 280px; }
+            
             .button { width: 100%; transform: none !important; transition: none !important; }
             .button-viber { background-color: var(--color-viber-main) !important; }
             .button-tg { background-color: var(--color-tg-main) !important; }
@@ -571,12 +603,14 @@
         }
 
         @media (max-width: 480px) {
-            h1 { font-size: 24px; }
-            .button--bubble__container { width: 260px; }
+            .container { padding: 0 16px; }
+            h1 { font-size: 25px; }
             .category-image-frame { 
                 width: 260px !important;
                 height: 260px !important;
             }
+            .category-content { padding: 30px 20px; }
+            .button--bubble__container { max-width: 100%; }
         }
     </style>
 </head>
@@ -594,12 +628,12 @@
 
     <section class="top-section">
         <div class="container">
-            <h1>Якісна жіноча нижня білизна та колготки від виробника</h1>
+            <h1 class="animate-scroll delay-1">Якісна жіноча нижня білизна та колготки від виробника</h1>
             <div class="top-grid">
-                <div class="logo-placeholder">
-                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783883114/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_220511338_fmfsgd.png" alt="Dress Together">
+                <div class="logo-placeholder animate-scroll delay-2">
+                    <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783950356/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_164553421_hxuzne.png" alt="Dress Together">
                 </div>
-                <div>
+                <div class="animate-scroll delay-3">
                     <p class="welcome-text">
                         Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякіську жіночу нижню білизна, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, мы поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
                     </p>
@@ -608,7 +642,7 @@
         </div>
     </section>
     
-    <section class="category-block bg-alt">
+    <section class="category-block bg-alt animate-scroll">
         <div class="container">
             <div class="category-card">
                 <div class="chess-grid">
@@ -625,7 +659,7 @@
         </div>
     </section>
 
-    <section class="category-block">
+    <section class="category-block animate-scroll">
         <div class="container">
             <div class="category-card">
                 <div class="chess-grid mobile-reverse">
@@ -634,7 +668,7 @@
                     </div>
                     <div class="category-content">
                         <h2>Бюстгальтери</h2>
-                        <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживни моделі, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
+                        <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживни models, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                 </div>
@@ -642,7 +676,7 @@
         </div>
     </section>
 
-    <section class="category-block bg-alt">
+    <section class="category-block bg-alt animate-scroll">
         <div class="container">
             <div class="category-card">
                 <div class="chess-grid">
@@ -659,7 +693,7 @@
         </div>
     </section>
 
-    <section class="category-block">
+    <section class="category-block animate-scroll">
         <div class="container">
             <div class="category-card">
                 <div class="chess-grid mobile-reverse">
@@ -676,13 +710,13 @@
         </div>
     </section>
 
-    <section class="category-block bg-men-boxers">
+    <section class="category-block bg-men-boxers animate-scroll">
         <div class="container">
             <div class="category-card">
                 <div class="chess-grid">
                     <div class="category-content">
                         <h2>Чоловічі труси боксери</h2>
-                        <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. M'яка брендована або прихована резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
+                        <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. M'яка брендована або приховата резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
@@ -693,7 +727,7 @@
         </div>
     </section>
 
-    <section id="contact-section" class="standalone-contact-section">
+    <section id="contact-section" class="standalone-contact-section animate-scroll">
         <div class="container">
             <div class="contact-flex-layout">
                 <div class="footer-cta-text">
@@ -752,6 +786,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
     <script>
+        // БАГАТОРАЗОВА АНІМАЦІЯ ПРИ ПРОКРУТЦІ (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', function() {
+            var animatedElements = document.querySelectorAll('.animate-scroll');
+            
+            var observerOptions = {
+                root: null,
+                rootMargin: '-10px 0px', // Невеликий оффсет для виключення мікро-мерехтінь на краях екрану
+                threshold: 0.1 // Спрацьовує, як тільки 10% елемента перетинає екран
+            };
+
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        // Елемент з'явився на екрані -> Додаємо клас для анімації
+                        entry.target.classList.add('is-visible');
+                    } else {
+                        // Елемент повністю зник з екрану -> Забираємо клас, скидаючи стан у початковий
+                        entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(function(element) {
+                observer.observe(element);
+            });
+        });
+
+        // Скрипти для кнопок із бульбашками (залишились незмінними)
         $('.button--bubble').each(function() {
             var $button = $(this);
             var $container = $button.parent();
