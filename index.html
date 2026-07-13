@@ -402,6 +402,7 @@
             z-index: 5;
         }
 
+        /* Основна клікабельна кнопка — ТЕПЕР ЗАВЖДИ ЧІТКА (БЕЗ ФІЛЬТРУ GOO) */
         .button {
             -webkit-font-smoothing: antialiased;
             border: none;
@@ -418,7 +419,11 @@
             border-radius: 35px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
             position: relative;
+            z-index: 4; /* Поверх ефекту рідких бульбашок */
         }
+
+        .button-tg { background: var(--color-tg-main); }
+        .button-viber { background: var(--color-viber-main); }
 
         .button span,
         .button .icon {
@@ -468,7 +473,6 @@
             filter: brightness(0) invert(1);
         }
 
-        .button--bubble { background: none; }
         .button--bubble__container { position: relative; display: inline-block; }
 
         .goo {
@@ -478,60 +482,65 @@
             height: 1px;
         }
 
+        /* Контейнер ефектів тепер зливає ТІЛЬКИ внутрішні елементи, не зачіпаючи основну кнопку */
+        .button-tg ~ .button--bubble__effect-container .circle,
+        .button-tg ~ .button--bubble__effect-container .effect-button { background: var(--color-tg-main); }
+        
+        .button-viber ~ .button--bubble__effect-container .circle,
+        .button-viber ~ .button--bubble__effect-container .effect-button { background: var(--color-viber-main); }
+
+        .button--bubble__effect-container .circle {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+        .button--bubble__effect-container .circle.top-left { top: 40%; left: 27%; }
+        .button--bubble__effect-container .circle.bottom-right { bottom: 40%; right: 27%; }
+        
+        .button--bubble__effect-container {
+            position: absolute;
+            display: block;
+            width: 200%;
+            height: 400%;
+            top: -150%;
+            left: -50%;
+            filter: url("#goo"); /* Фільтр застосовується лише до бульбашок */
+            transition: all 0.1s ease-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .button--bubble__container .effect-button {
+            position: absolute;
+            width: 50%;
+            height: 25%;
+            top: 50%;
+            left: 25%;
+            z-index: 1;
+            transform: translateY(-50%);
+            border-radius: 35px;
+        }
+
         @media (min-width: 1024px) {
             .button { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
             .button span { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
             .button .icon { transition: all 0.25s cubic-bezier(0.310, -0.105, 0.430, 1.400); }
             .button .icon img { transition: all 0.25s ease; }
             
+            .button:hover { background: transparent !important; } /* Ховаємо колір основи на ПК, щоб бачити рідку кнопку під нею */
             .button:hover span { left: -75%; opacity: 0; }
             .button:hover .icon { width: 100%; }
             .button:hover .icon img { width: 32px; height: 32px; }
             .button:active { transform: scale(0.95); }
             
-            .button-tg + .button--bubble__effect-container .circle,
-            .button-tg + .button--bubble__effect-container .button { background: var(--color-tg-main); }
-            .button-tg:hover + .button--bubble__effect-container .circle,
-            .button-tg:hover + .button--bubble__effect-container .button { background: var(--color-tg-hover); }
-
-            .button-viber + .button--bubble__effect-container .circle,
-            .button-viber + .button--bubble__effect-container .button { background: var(--color-viber-main); }
-            .button-viber:hover + .button--bubble__effect-container .circle,
-            .button-viber:hover + .button--bubble__effect-container .button { background: var(--color-viber-hover); }
-
-            .button--bubble:active + .button--bubble__effect-container { transform: scale(0.95); }
+            .button-tg:hover ~ .button--bubble__effect-container .circle,
+            .button-tg:hover ~ .button--bubble__effect-container .effect-button { background: var(--color-tg-hover); }
             
-            .button--bubble__effect-container .circle {
-                position: absolute;
-                width: 25px;
-                height: 25px;
-                border-radius: 50%;
-            }
-            .button--bubble__effect-container .circle.top-left { top: 40%; left: 27%; }
-            .button--bubble__effect-container .circle.bottom-right { bottom: 40%; right: 27%; }
-            
-            .button--bubble__effect-container {
-                position: absolute;
-                display: block;
-                width: 200%;
-                height: 400%;
-                top: -150%;
-                left: -50%;
-                filter: url("#goo");
-                transition: all 0.1s ease-out;
-                pointer-events: none;
-                z-index: 1;
-            }
-            .button--bubble__container .effect-button {
-                position: absolute;
-                width: 50%;
-                height: 25%;
-                top: 50%;
-                left: 25%;
-                z-index: 1;
-                transform: translateY(-50%);
-                border-radius: 20px;
-            }
+            .button-viber:hover ~ .button--bubble__effect-container .circle,
+            .button-viber:hover ~ .button--bubble__effect-container .effect-button { background: var(--color-viber-hover); }
+
+            .button:hover ~ .button--bubble__effect-container { transform: scale(1); }
         }
 
         @media (max-width: 1399px) {
@@ -599,10 +608,10 @@
             .cta-group { flex-direction: column !important; width: 100%; gap: 16px !important; }
             .button--bubble__container { display: block; width: 100%; max-width: 280px; margin: 0 auto; }
             
+            /* На мобільних кнопка має фіксований колір та ідеально чіткі межі */
             .button { width: 100%; transform: none !important; transition: none !important; }
             .button-viber { background-color: var(--color-viber-main) !important; }
             .button-tg { background-color: var(--color-tg-main) !important; }
-            .button--bubble__effect-container { display: none !important; }
         }
 
         @media (max-width: 480px) {
@@ -638,7 +647,7 @@
                 </div>
                 <div class="animate-scroll delay-3">
                     <p class="welcome-text">
-                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякісну жіночу нижню білизну, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, ми поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
+                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякісну жіночу нижню білизну, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, мы поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
                     </p>
                 </div>
             </div>
@@ -655,7 +664,7 @@
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783955889/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_181805263_k6p9ig.png" alt="Жіночі трусики купити" style="width: 100%; height: 100%;">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783957147/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_183831432_sn85qf.webp" alt="Жіночі трусики купити" style="width: 100%; height: 100%;">
                     </div>
                 </div>
             </div>
@@ -667,7 +676,7 @@
             <div class="category-card">
                 <div class="chess-grid mobile-reverse">
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783877927/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_203842843_dn7xgv.png" alt="Бюстгальтери від виробника">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783957437/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_184319716_theytf.webp" alt="Бюстгальтери від виробника">
                     </div>
                     <div class="category-content">
                         <h2>Бюстгальтери</h2>
@@ -689,7 +698,7 @@
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783878282/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_204437408_jxr26q.png" alt="Безшовні топи в Україні">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783957363/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_184205295_vynbzc.webp" alt="Безшовні топи в Україні">
                     </div>
                 </div>
             </div>
@@ -701,7 +710,7 @@
             <div class="category-card">
                 <div class="chess-grid mobile-reverse">
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783879503/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_210430701_diqkeg.png" alt="Еластичні лосини та колготи">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783957275/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_184006087_ulfcza.webp" alt="Еластичні лосини та колготи">
                     </div>
                     <div class="category-content">
                         <h2>Лосини та колготи</h2>
@@ -723,7 +732,7 @@
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783879631/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_210635265_e7b6sq.png" alt="Чоловіча білизна боксери" style="width: 70%; height: 70%;">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783957044/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_183613392_crps7b.webp" alt="Чоловіча білизна боксери" style="width: 70%; height: 70%;">
                     </div>
                 </div>
             </div>
@@ -755,7 +764,7 @@
                                 <span class="circle top-left"></span>
                                 <span class="circle top-left"></span>
                                 <span class="circle top-left"></span>
-                                <span class="button effect-button"></span>
+                                <span class="effect-button"></span>
                                 <span class="circle bottom-right"></span>
                                 <span class="circle bottom-right"></span>
                                 <span class="circle bottom-right"></span>
@@ -773,7 +782,7 @@
                                 <span class="circle top-left"></span>
                                 <span class="circle top-left"></span>
                                 <span class="circle top-left"></span>
-                                <span class="button effect-button"></span>
+                                <span class="effect-button"></span>
                                 <span class="circle bottom-right"></span>
                                 <span class="circle bottom-right"></span>
                                 <span class="circle bottom-right"></span>
@@ -789,6 +798,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
     <script>
+        // Одноразова анімація появи елементів за допомогою IntersectionObserver
         document.addEventListener('DOMContentLoaded', function() {
             var animatedElements = document.querySelectorAll('.animate-scroll');
             
@@ -798,19 +808,14 @@
                 threshold: 0.05 
             };
 
-            var observer = new IntersectionObserver(function(entries) {
+            var observer = new IntersectionObserver(function(entries, observer) {
                 entries.forEach(function(entry) {
-                    requestAnimationFrame(function() {
-                        if (entry.isIntersecting) {
-                            if (!entry.target.classList.contains('is-visible')) {
-                                entry.target.classList.add('is-visible');
-                            }
-                        } else {
-                            if (entry.target.classList.contains('is-visible')) {
-                                entry.target.classList.remove('is-visible');
-                            }
-                        }
-                    });
+                    if (entry.isIntersecting) {
+                        requestAnimationFrame(function() {
+                            entry.target.classList.add('is-visible');
+                        });
+                        observer.unobserve(entry.target);
+                    }
                 });
             }, observerOptions);
 
@@ -819,12 +824,13 @@
             });
         });
 
+        // Ефект рідких кнопок (Bubble effect)
         $('.button--bubble').each(function() {
             var $button = $(this);
             var $container = $button.parent();
             var $circlesTopLeft = $container.find('.circle.top-left');
             var $circlesBottomRight = $container.find('.circle.bottom-right');
-            var $effectButton = $container.find('.button.effect-button');
+            var $effectButton = $container.find('.effect-button');
 
             var tl = new TimelineLite();
             var tl2 = new TimelineLite();
@@ -862,11 +868,19 @@
 
             btTl.timeScale(2.6);
 
+            // На десктопах анімація спрацьовує при наведенні миші
             $button.on('mouseenter', function() {
                 if (window.innerWidth > 1023 && !btTl.isActive()) {
                     btTl.restart();
                 }
             });
+
+            // На мобільних пристроях анімація циклічно запускається кожні 4 секунди
+            setInterval(function() {
+                if (window.innerWidth <= 1023 && !btTl.isActive()) {
+                    btTl.restart();
+                }
+            }, 4000);
         });
     </script>
 </body>
