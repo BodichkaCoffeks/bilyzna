@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L’Amour Lingerie | Нижня білизна для вашого комфорту</title>
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dzqwklovt/image/upload/v1783949195/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_162633243_xetuia.png">
-    <meta name="description" content="Інтернет-магазин L’Amour Lingerie: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери за найкращими цінами в Украине.">
+    <meta name="description" content="Інтернет-магазин L’Amour Lingerie: якісна жіноча нижня білизна, бюстгальтери, топи, лосини, колготи та чоловічі боксери за найкращими цінами в Україні.">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -65,26 +65,26 @@
         }
 
         /* ==========================================================================
-           СТАНДАРТНІ СТИЛІ ДЛЯ АНІМАЦІЇ ВИПЛИВАННЯ ЗНИЗУ
+           ОПТИМІЗОВАНІ СТИЛІ ДЛЯ АНІМАЦІЇ ТА АПАРАТНОГО ПРИСКОРЕННЯ (ANTI-JITTER)
            ========================================================================== */
         .animate-scroll {
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), 
-                        transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: translate3d(0, 30px, 0);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             will-change: transform, opacity;
+            transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), 
+                        transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
 
-        /* Клас, який додаватиметься через JS, коли елемент стає видимим */
         .animate-scroll.is-visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
 
-        /* Ефект каскадної затримки для елементів першого екрана */
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.3s; }
-        .delay-3 { transition-delay: 0.5s; }
+        .delay-1 { transition-delay: 0.05s; }
+        .delay-2 { transition-delay: 0.15s; }
+        .delay-3 { transition-delay: 0.25s; }
 
         /* ==========================================================================
            ПЕРША СЕКЦІЯ (TOP SECTION)
@@ -140,7 +140,7 @@
         }
 
         /* ==========================================================================
-           ДИЗАЙН КАРТОК КАТЕГОРІЙ (ЗБІЛЬШЕНІ БЛОКИ)
+           ДИЗАЙН КАРТОК КАТЕГОРІЙ
            ========================================================================== */
         .category-block {
             padding: 120px 0; 
@@ -148,6 +148,7 @@
             overflow: hidden;
             display: flex;
             align-items: center;
+            contain: layout style;
         }
 
         .category-block.bg-alt {
@@ -237,6 +238,7 @@
             transition: background-color 0.4s ease;
             cursor: pointer;
             animation: float-frame 6s ease-in-out infinite;
+            transform: translateZ(0);
         }
 
         .category-image-frame::after {
@@ -254,8 +256,8 @@
         }
 
         @keyframes float-frame {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, -15px, 0); }
         }
 
         @keyframes pulse-frame {
@@ -324,8 +326,8 @@
         }
 
         @keyframes point-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
+            0%, 100% { transform: translate3d(0, 0, 0); }
+            50% { transform: translate3d(0, 6px, 0); }
         }
 
         /* ==========================================================================
@@ -337,6 +339,7 @@
             padding: 120px 0;
             background-color: #8D7A6B;
             overflow: hidden;
+            contain: layout style;
         }
 
         .contact-flex-layout {
@@ -538,7 +541,7 @@
         }
 
         /* ==========================================================================
-           ОПТИМІЗОВАНИЙ СТИЛЬ ДЛЯ МОБІЛЬНИХ ПРИСТРОЇВ
+           МОБІЛЬНІ СТИЛІ З ЗАХИСТОМ ВІД ЗСУВУ ГЕОМЕТРІЇ
            ========================================================================== */
         @media (max-width: 1023px) {
             .container { padding: 0 24px; }
@@ -591,10 +594,10 @@
             .footer-cta-text h3 { font-size: 30px; margin-bottom: 15px; }
             .footer-cta-text p { text-align: center; font-size: 15px; line-height: 1.7; }
             
-            .footer-actions-right { max-width: 100%; }
+            .footer-actions-right { max-width: 100%; width: 100%; }
             .messenger-heading { font-size: 13px; margin-bottom: 25px; }
             .cta-group { flex-direction: column !important; width: 100%; gap: 16px !important; }
-            .button--bubble__container { display: block; width: 100%; max-width: 280px; }
+            .button--bubble__container { display: block; width: 100%; max-width: 280px; margin: 0 auto; }
             
             .button { width: 100%; transform: none !important; transition: none !important; }
             .button-viber { background-color: var(--color-viber-main) !important; }
@@ -635,7 +638,7 @@
                 </div>
                 <div class="animate-scroll delay-3">
                     <p class="welcome-text">
-                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякіську жіночу нижню білизна, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, мы поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
+                        Вітаємо в інтернет-магазині Dress Together. Ми пропонуємо вишукану та високоякісну жіночу нижню білизну, еластичні колготки, безшовні топи, коригуючий одяг та шкарпетки напряму від виробника. Створюючи наші колекції, ми поєднуємо преміальні європейські матеріали, інноваційні безшовні технології та актуальні анатомічні лекала. Наша білизна дарує ідеальну посадку, високу зносостійкість та делікатний дотик до шкіри. Ми гарантуємо чудовий сервіс, швидку доставку по всій Україні та регулярне оновлення асортименту, щоб ви завжди могли підібрати ідеальну модель для свого неповторного образу.
                     </p>
                 </div>
             </div>
@@ -648,11 +651,11 @@
                 <div class="chess-grid">
                     <div class="category-content">
                         <h2>Жіночі трусики</h2>
-                        <p>Великий вибір актуальних жіночих моделей на будь-який вкус: від класичних бавовняних сліпів та шортиків для щоденного комфорту до витончених мереживних стрінгів, бразиліана та елегантних моделей з високою посадкою. Використання якісних, дихаючих та гіпоалергенних матеріалів забезпечує чудову зносостійкість та ідеальну посадку на будь-яку фігуру.</p>
+                        <p>Великий вибір актуальних жіночих моделей на будь-який смак: від класичних бавовняних сліпів та шортиків для щоденного комфорту до витончених мереживних стрінгів, бразиліана та елегантних моделей з високою посадкою. Використання якісних, дихаючих та гіпоалергенних матеріалів забезпечує чудову зносостійкість та ідеальну посадку на будь-яку фігуру.</p>
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
-                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783886228/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-12_225704470_yybfay.png" alt="Жіночі трусики купити" style="width: 100%; height: 100%;">
+                        <img src="https://res.cloudinary.com/dzqwklovt/image/upload/v1783955889/%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F_2026-07-13_181805263_k6p9ig.png" alt="Жіночі трусики купити" style="width: 100%; height: 100%;">
                     </div>
                 </div>
             </div>
@@ -668,7 +671,7 @@
                     </div>
                     <div class="category-content">
                         <h2>Бюстгальтери</h2>
-                        <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживни models, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
+                        <p>Сучасні та зручні рішення для вашого гардероба: класичні бюстгальтери на кісточках, формовані чашки з ефектом push-up, легкі мереживні моделі, а також базові бра без поролону. Наша продукція підтримує анатомічно правильну форму, поєднує європейську фурнітуру та міцні еластичні стрічки, гарантуючи тривале збереження форми та комфорт під час носіння.</p>
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                 </div>
@@ -716,7 +719,7 @@
                 <div class="chess-grid">
                     <div class="category-content">
                         <h2>Чоловічі труси боксери</h2>
-                        <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. M'яка брендована або приховата резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
+                        <p>Якісна чоловіча лінійка білизни, орієнтована на максимальний комфорт та практичність. Боксери виготовлені з натуральної високоякісної бавовни з додаванням еластану для кращої стійкості до зношування та збереження форми. М'яка брендована або прихована резинка не тисне, плоскі шви запобігають натиранню, а перевірені лекала гарантують зручність протягом усього дня.</p>
                         <a href="#contact-section" class="category-scroll-link">Зв'язатись з нами <span class="arrow">↓</span></a>
                     </div>
                     <div class="category-image-frame">
@@ -733,7 +736,7 @@
                 <div class="footer-cta-text">
                     <h3>Зв'яжіться з нами</h3>
                     <p>
-                        Маєте запитання щодо асортименту, наявності кольорів або не впевнені, який размер підійде саме вам? Наша команда підтримки працює без вихідних і завжди готова надати персональну консультацію. Ми детально розповімо про особливості матеріалів кожної модели, допоможемо підібрати ідеальну посадку за вашими індивідуальними замірами та оперативно допоможемо з оформленням швидкого замовлення.
+                        Маєте запитання щодо асортименту, наявності кольорів або не впевнені, який розмір підійде саме вам? Наша команда підтримки працює без вихідних і завжди готова надати персональну консультацію. Ми детально розповімо про особливості матеріалів кожної моделі, допоможемо підібрати ідеальну посадку за вашими індивідуальними замірами та оперативно допоможемо з оформленням швидкого замовлення.
                     </p>
                 </div>
 
@@ -786,25 +789,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
     <script>
-        // БАГАТОРАЗОВА АНІМАЦІЯ ПРИ ПРОКРУТЦІ (Intersection Observer)
         document.addEventListener('DOMContentLoaded', function() {
             var animatedElements = document.querySelectorAll('.animate-scroll');
             
             var observerOptions = {
                 root: null,
-                rootMargin: '-10px 0px', // Невеликий оффсет для виключення мікро-мерехтінь на краях екрану
-                threshold: 0.1 // Спрацьовує, як тільки 10% елемента перетинає екран
+                rootMargin: '20px 0px',
+                threshold: 0.05 
             };
 
             var observer = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        // Елемент з'явився на екрані -> Додаємо клас для анімації
-                        entry.target.classList.add('is-visible');
-                    } else {
-                        // Елемент повністю зник з екрану -> Забираємо клас, скидаючи стан у початковий
-                        entry.target.classList.remove('is-visible');
-                    }
+                    requestAnimationFrame(function() {
+                        if (entry.isIntersecting) {
+                            if (!entry.target.classList.contains('is-visible')) {
+                                entry.target.classList.add('is-visible');
+                            }
+                        } else {
+                            if (entry.target.classList.contains('is-visible')) {
+                                entry.target.classList.remove('is-visible');
+                            }
+                        }
+                    });
                 });
             }, observerOptions);
 
@@ -813,7 +819,6 @@
             });
         });
 
-        // Скрипти для кнопок із бульбашками (залишились незмінними)
         $('.button--bubble').each(function() {
             var $button = $(this);
             var $container = $button.parent();
