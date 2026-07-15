@@ -190,7 +190,7 @@
 
         /* ВИПРАВЛЕНО: Правильне шахове чергування колонок на великих екранах */
         @media (min-width: 1024px) {
-            /* Для кожної ПАРНОЇ секції (.category-block) міняємо місцями колонки грида */
+            /* Для кожної ПАРНОЇ секції (.category-block) міняємо місцями формування грида */
             .category-block:nth-child(even) .chess-grid {
                 grid-template-columns: 1fr 1.85fr; /* Картинка зліва (вужча), текст справа (ширший) */
             }
@@ -281,8 +281,9 @@
         }
 
         .category-scroll-link * {
-        pointer-events: none;
+            pointer-events: none !important;
         }
+        
 
         .category-scroll-link .link-text {
             position: relative;
